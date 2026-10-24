@@ -1,0 +1,6 @@
+# M0 direct dependencies: pinned to the versions verified in this workspace.
+fastapi==0.142.1
+pydantic==2.13.4
+uvicorn==0.54.0
+httpx==0.28.1
+

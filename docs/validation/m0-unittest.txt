@@ -1,0 +1,27 @@
+test_blank_question_is_rejected (test_support.SupportTests.test_blank_question_is_rejected) ... ok
+test_consultation_uses_one_read (test_support.SupportTests.test_consultation_uses_one_read) ... ok
+test_explicit_intent_does_not_remove_required_diagnostic_fields (test_support.SupportTests.test_explicit_intent_does_not_remove_required_diagnostic_fields) ... ok
+test_external_cancellation_propagates_and_cleans_up (test_support.SupportTests.test_external_cancellation_propagates_and_cleans_up) ... ok
+test_extra_identity_or_confirmation_cannot_be_injected (test_support.SupportTests.test_extra_identity_or_confirmation_cannot_be_injected) ... ok
+test_identity_is_required (test_support.SupportTests.test_identity_is_required) ... ok
+test_missing_product_stops_before_tools (test_support.SupportTests.test_missing_product_stops_before_tools) ... ok
+test_missing_symptom_asks_explicitly (test_support.SupportTests.test_missing_symptom_asks_explicitly) ... ok
+test_missing_version_stops_before_tools (test_support.SupportTests.test_missing_version_stops_before_tools) ... ok
+test_no_evidence_does_not_invent_answer_or_status (test_support.SupportTests.test_no_evidence_does_not_invent_answer_or_status) ... ok
+test_product_version_permission_is_checked_on_server (test_support.SupportTests.test_product_version_permission_is_checked_on_server) ... ok
+test_read_phase_deadline_cancels_inflight_read (test_support.SupportTests.test_read_phase_deadline_cancels_inflight_read) ... ok
+test_read_timeout_cancels_dependency_and_does_not_retry (test_support.SupportTests.test_read_timeout_cancels_dependency_and_does_not_retry) ... ok
+test_simultaneous_requests_have_independent_budgets (test_support.SupportTests.test_simultaneous_requests_have_independent_budgets) ... ok
+test_status_failure_preserves_only_actual_documents (test_support.SupportTests.test_status_failure_preserves_only_actual_documents) ... ok
+test_ticket_is_only_an_exact_draft (test_support.SupportTests.test_ticket_is_only_an_exact_draft) ... ok
+test_tool_budget_blocks_further_adapter_calls (test_support.SupportTests.test_tool_budget_blocks_further_adapter_calls) ... ok
+test_tool_interface_also_enforces_permission (test_support.SupportTests.test_tool_interface_also_enforces_permission) ... ok
+test_troubleshooting_uses_docs_then_status (test_support.SupportTests.test_troubleshooting_uses_docs_then_status) ... ok
+test_unknown_product_and_version_rejected (test_support.SupportTests.test_unknown_product_and_version_rejected) ... ok
+test_unrecognized_intent_goes_to_human (test_support.SupportTests.test_unrecognized_intent_goes_to_human) ... ok
+test_version_is_filtered_before_returning_evidence (test_support.SupportTests.test_version_is_filtered_before_returning_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.458s
+
+OK

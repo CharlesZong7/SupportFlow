@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NimbusDesk · M0 模拟技术支持</title>
+<body>
+  <h1>NimbusDesk · M0 模拟技术支持</h1>
+  <p>虚构产品、规则分诊、本地模拟资料及状态。未接模型，不创建工单，不保存会话。</p>
+  <p><a href="/docs">Swagger API 文档（界面资源需要联网）</a></p>
+  <form id="support-form">
+    <p><label>本地演示身份
+      <select id="token"><option>dev-alice</option><option>dev-bob</option></select>
+    </label>（公开演示凭据，不是生产登录）</p>
+    <p><label>产品 <input id="product" value="nimbusdesk" required></label></p>
+    <p><label>版本 <select id="version"><option>1.1</option><option>1.0</option><option value="">未提供</option></select></label></p>
+    <p><label>问题<br><textarea id="question" rows="3" cols="55" maxlength="2000" required>导出 CSV 最多多少行？</textarea></label></p>
+    <p><label>诊断现象（排查故障时填写）<br><textarea id="symptom" rows="2" cols="55" maxlength="1000"></textarea></label></p>
+    <button type="submit">提交只读请求 / 生成工单草案</button>
+  </form>
+  <p>试一试：将问题改为“导出超时怎么办？”，并填写现象；或输入“请创建工单：导出报错”。</p>
+  <pre id="result" aria-live="polite"></pre>
+  <script>
+    const form = document.getElementById('support-form');
+    const result = document.getElementById('result');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button');
+      button.disabled = true;
+      result.textContent = '查询中…';
+      const payload = {question: document.getElementById('question').value};
+      for (const name of ['product', 'version', 'symptom']) {
+        const value = document.getElementById(name).value.trim();
+        if (value) payload[name] = value;
+      }
+      try {
+        const response = await fetch('/api/support', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + document.getElementById('token').value},
+          body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(5000),
+        });
+        result.textContent = 'HTTP ' + response.status + '\n' + JSON.stringify(await response.json(), null, 2);
+      } catch (error) {
+        result.textContent = '请求未完成：' + error.message + '。本轮没有工单写入操作，可重新提交只读请求。';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

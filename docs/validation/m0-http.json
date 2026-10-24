@@ -1,0 +1,246 @@
+{
+  "verified_at": "2026-10-23T17:17:14.799411+08:00",
+  "scope": "local HTTP + mock fixtures; no model or external service calls",
+  "python": "3.12.5",
+  "packages": {
+    "fastapi": "0.142.1",
+    "pydantic": "2.13.4",
+    "uvicorn": "0.54.0",
+    "httpx": "0.28.1"
+  },
+  "cases": [
+    {
+      "case": "consultation",
+      "http_status": 200,
+      "response": {
+        "request_id": "8c3774c5-0319-45c0-9cb3-7492d1444448",
+        "mode": "mock",
+        "status": "answered",
+        "route": "consultation",
+        "reply": "匹配版本的模拟资料摘要：\n[MANUAL-1.1-EXPORT] 【模拟手册】NimbusDesk 1.1 支持在报表页导出 CSV，单次最多 5000 行；超过时应缩小筛选范围。",
+        "questions": [],
+        "evidence": [
+          {
+            "evidence_id": "MANUAL-1.1-EXPORT",
+            "product": "nimbusdesk",
+            "version": "1.1",
+            "kind": "manual",
+            "source": "mock://nimbusdesk/1.1/manual/export",
+            "content": "【模拟手册】NimbusDesk 1.1 支持在报表页导出 CSV，单次最多 5000 行；超过时应缩小筛选范围。",
+            "simulated": true
+          }
+        ],
+        "service_status": null,
+        "ticket_draft": null,
+        "tool_calls": [
+          {
+            "name": "search_documents",
+            "outcome": "ok"
+          }
+        ],
+        "trace": [
+          "scope_validated",
+          "rule_routed",
+          "documents_read",
+          "baseline_answered"
+        ],
+        "limitations": [
+          "M0 规则业务基线；所有资料与状态均为模拟数据，未调用模型。",
+          "请求内执行，无任务持久化、后台恢复或工单写入能力。"
+        ]
+      }
+    },
+    {
+      "case": "troubleshooting",
+      "http_status": 200,
+      "response": {
+        "request_id": "786fd210-b025-44a0-a377-9393c2c555d3",
+        "mode": "mock",
+        "status": "answered",
+        "route": "troubleshooting",
+        "reply": "匹配版本的模拟资料摘要：\n[MANUAL-1.1-EXPORT] 【模拟手册】NimbusDesk 1.1 支持在报表页导出 CSV，单次最多 5000 行；超过时应缩小筛选范围。\n[RELEASE-1.1-EXPORT] 【模拟版本说明】1.1 的大范围报表导出存在已知超时问题。可尝试缩小筛选范围并保留错误信息；这不保证解决所有超时。\n[STATUS-1.1-EXPORT] 【模拟状态快照】1.1 的导出队列被标记为延迟；无法据此确认当前用户超时的根因。\n以上仅为资料与固定状态快照，尚未确认用户问题的根因。",
+        "questions": [],
+        "evidence": [
+          {
+            "evidence_id": "MANUAL-1.1-EXPORT",
+            "product": "nimbusdesk",
+            "version": "1.1",
+            "kind": "manual",
+            "source": "mock://nimbusdesk/1.1/manual/export",
+            "content": "【模拟手册】NimbusDesk 1.1 支持在报表页导出 CSV，单次最多 5000 行；超过时应缩小筛选范围。",
+            "simulated": true
+          },
+          {
+            "evidence_id": "RELEASE-1.1-EXPORT",
+            "product": "nimbusdesk",
+            "version": "1.1",
+            "kind": "release_notes",
+            "source": "mock://nimbusdesk/1.1/releases/export-timeout",
+            "content": "【模拟版本说明】1.1 的大范围报表导出存在已知超时问题。可尝试缩小筛选范围并保留错误信息；这不保证解决所有超时。",
+            "simulated": true
+          },
+          {
+            "evidence_id": "STATUS-1.1-EXPORT",
+            "product": "nimbusdesk",
+            "version": "1.1",
+            "kind": "service_status",
+            "source": "mock://nimbusdesk/1.1/status/export",
+            "content": "【模拟状态快照】1.1 的导出队列被标记为延迟；无法据此确认当前用户超时的根因。",
+            "simulated": true
+          }
+        ],
+        "service_status": {
+          "state": "degraded",
+          "recorded_at": "2026-10-23T00:00:00Z",
+          "evidence": {
+            "evidence_id": "STATUS-1.1-EXPORT",
+            "product": "nimbusdesk",
+            "version": "1.1",
+            "kind": "service_status",
+            "source": "mock://nimbusdesk/1.1/status/export",
+            "content": "【模拟状态快照】1.1 的导出队列被标记为延迟；无法据此确认当前用户超时的根因。",
+            "simulated": true
+          }
+        },
+        "ticket_draft": null,
+        "tool_calls": [
+          {
+            "name": "search_documents",
+            "outcome": "ok"
+          },
+          {
+            "name": "get_service_status",
+            "outcome": "ok"
+          }
+        ],
+        "trace": [
+          "scope_validated",
+          "rule_routed",
+          "documents_read",
+          "service_status_read",
+          "baseline_answered"
+        ],
+        "limitations": [
+          "M0 规则业务基线；所有资料与状态均为模拟数据，未调用模型。",
+          "请求内执行，无任务持久化、后台恢复或工单写入能力。"
+        ]
+      }
+    },
+    {
+      "case": "missing_version",
+      "http_status": 200,
+      "response": {
+        "request_id": "57c40382-c65a-4a95-b214-087599ab6291",
+        "mode": "mock",
+        "status": "needs_info",
+        "route": "consultation",
+        "reply": "需要先补充信息；本次未调用工具。",
+        "questions": [
+          "请提供准确版本（演示版本为 1.0 或 1.1）。"
+        ],
+        "evidence": [],
+        "service_status": null,
+        "ticket_draft": null,
+        "tool_calls": [],
+        "trace": [
+          "scope_validated",
+          "rule_routed",
+          "clarification_required"
+        ],
+        "limitations": [
+          "M0 规则业务基线；所有资料与状态均为模拟数据，未调用模型。",
+          "请求内执行，无任务持久化、后台恢复或工单写入能力。"
+        ]
+      }
+    },
+    {
+      "case": "no_evidence",
+      "http_status": 200,
+      "response": {
+        "request_id": "983c4741-a984-4691-9f2c-e900b35f149a",
+        "mode": "mock",
+        "status": "needs_human",
+        "route": "troubleshooting",
+        "reply": "没有找到匹配产品、版本及主题的模拟资料，请转人工补充证据。",
+        "questions": [],
+        "evidence": [],
+        "service_status": null,
+        "ticket_draft": null,
+        "tool_calls": [
+          {
+            "name": "search_documents",
+            "outcome": "ok"
+          }
+        ],
+        "trace": [
+          "scope_validated",
+          "rule_routed",
+          "documents_read",
+          "insufficient_evidence"
+        ],
+        "limitations": [
+          "M0 规则业务基线；所有资料与状态均为模拟数据，未调用模型。",
+          "请求内执行，无任务持久化、后台恢复或工单写入能力。"
+        ]
+      }
+    },
+    {
+      "case": "ticket_draft",
+      "http_status": 200,
+      "response": {
+        "request_id": "97c3469a-b7a7-409d-bb02-c8ed51d2b7e1",
+        "mode": "mock",
+        "status": "awaiting_confirmation",
+        "route": "create_ticket",
+        "reply": "请核对工单草案参数。M0 未实现确认和创建接口，尚未创建工单。",
+        "questions": [],
+        "evidence": [],
+        "service_status": null,
+        "ticket_draft": {
+          "action": "create_ticket",
+          "product": "nimbusdesk",
+          "version": "1.1",
+          "requester_id": "demo-alice",
+          "title": "请创建工单：导出报错",
+          "description": "请创建工单：导出报错",
+          "confirmation_required": true,
+          "execution_available": false
+        },
+        "tool_calls": [],
+        "trace": [
+          "scope_validated",
+          "rule_routed",
+          "ticket_draft_only"
+        ],
+        "limitations": [
+          "M0 规则业务基线；所有资料与状态均为模拟数据，未调用模型。",
+          "请求内执行，无任务持久化、后台恢复或工单写入能力。"
+        ]
+      }
+    },
+    {
+      "case": "forbidden_version",
+      "http_status": 403,
+      "response": {
+        "detail": "无该产品版本的访问权限。"
+      }
+    },
+    {
+      "case": "unauthenticated",
+      "http_status": 401,
+      "response": {
+        "detail": "需要有效的本地演示 Bearer 凭据。"
+      }
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "mode": "mock",
+    "milestone": "M0",
+    "persistence": false
+  },
+  "entrypoint": {
+    "home_http": 200,
+    "openapi_http": 200
+  }
+}

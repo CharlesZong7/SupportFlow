@@ -1,0 +1,66 @@
+{
+  "notice": "本文件所有产品、手册、版本说明及服务状态均为本项目编写的虚构测试资料；无企业或真实用户数据。状态时间是固定样例时间，不是实时查询。",
+  "documents": [
+    {
+      "keywords": ["导出", "export", "csv"],
+      "evidence": {
+        "evidence_id": "MANUAL-1.0-EXPORT",
+        "product": "nimbusdesk",
+        "version": "1.0",
+        "kind": "manual",
+        "source": "mock://nimbusdesk/1.0/manual/export",
+        "content": "【模拟手册】NimbusDesk 1.0 支持在报表页导出 CSV，单次最多 1000 行；超过时应缩小筛选范围。"
+      }
+    },
+    {
+      "keywords": ["导出", "export", "csv"],
+      "evidence": {
+        "evidence_id": "MANUAL-1.1-EXPORT",
+        "product": "nimbusdesk",
+        "version": "1.1",
+        "kind": "manual",
+        "source": "mock://nimbusdesk/1.1/manual/export",
+        "content": "【模拟手册】NimbusDesk 1.1 支持在报表页导出 CSV，单次最多 5000 行；超过时应缩小筛选范围。"
+      }
+    },
+    {
+      "keywords": ["导出", "export", "csv"],
+      "symptom_keywords": ["超时", "timeout"],
+      "evidence": {
+        "evidence_id": "RELEASE-1.1-EXPORT",
+        "product": "nimbusdesk",
+        "version": "1.1",
+        "kind": "release_notes",
+        "source": "mock://nimbusdesk/1.1/releases/export-timeout",
+        "content": "【模拟版本说明】1.1 的大范围报表导出存在已知超时问题。可尝试缩小筛选范围并保留错误信息；这不保证解决所有超时。"
+      }
+    }
+  ],
+  "statuses": [
+    {
+      "state": "operational",
+      "recorded_at": "2026-10-23T00:00:00Z",
+      "evidence": {
+        "evidence_id": "STATUS-1.0-EXPORT",
+        "product": "nimbusdesk",
+        "version": "1.0",
+        "kind": "service_status",
+        "source": "mock://nimbusdesk/1.0/status/export",
+        "content": "【模拟状态快照】1.0 的导出服务被标记为正常；快照不证明用户环境没有故障。"
+      }
+    },
+    {
+      "state": "degraded",
+      "recorded_at": "2026-10-23T00:00:00Z",
+      "evidence": {
+        "evidence_id": "STATUS-1.1-EXPORT",
+        "product": "nimbusdesk",
+        "version": "1.1",
+        "kind": "service_status",
+        "source": "mock://nimbusdesk/1.1/status/export",
+        "content": "【模拟状态快照】1.1 的导出队列被标记为延迟；无法据此确认当前用户超时的根因。"
+      }
+    }
+  ]
+}
+
